@@ -8,7 +8,7 @@ const multer = require('multer'); // สำหรับการอัปโห�
 const xlsx = require('xlsx'); // สำหรับการอ่านไฟล์ Excel
 const app = express();
 require('dotenv').config();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 
 
 // กำหนดตัวเลือก CORS
@@ -161,8 +161,7 @@ app.get('/getdata', (req, res) => {
     });
 });
 
-// เริ่มต้นเซิร์ฟเวอร์
-const PORT = 8000;
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
