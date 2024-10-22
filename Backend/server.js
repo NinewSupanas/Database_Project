@@ -150,7 +150,7 @@ app.get('/getdata', (req, res) => {
     const sql = `
         SELECT data.date, data.patient_data, c.id_covid, c.hospital_name, c.location
         FROM data
-        JOIN covid_info c ON data.id_data = c.id_data 
+        LEFT JOIN covid_info c ON data.id_data = c.id_data
     `; // ดึงข้อมูลจากตาราง 'data'
     db.query(sql, (err, results) => {
         if (err) {

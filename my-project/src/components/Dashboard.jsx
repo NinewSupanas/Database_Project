@@ -14,7 +14,6 @@ const Dashboard = () => {
       try {
         const response = await fetch("http://localhost:8000/getdata");
         const data = await response.json();
-        onsole.log('Dashboard route accessed');
         console.log(data)
         setDbData(data);
       } catch (error) {
@@ -54,6 +53,7 @@ const Dashboard = () => {
 
   let filteredData = searchedData
     .filter((row) => (filterDate ? row.date === filterDate : true))
+    .filter((row) => row.date >= "2019-01-01" && row.patient_data > 0)
     .sort((a, b) => b.patient_data - a.patient_data);
 
   if (topN !== "All") {
@@ -236,7 +236,7 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {dbData.map((row, index) => (
+            {filteredData.map((row, index) => (
                 <tr key={index}>
                   <td>{row.date}</td>
                   <td>{row.patient_data}</td>
