@@ -68,7 +68,7 @@ function Import() {
     formData.append('file', new Blob([excelBuffer]), 'data.xlsx');
 
     try {
-      const response = await fetch('http://localhost:8000/import', {
+      const response = await fetch('https://database-project-1-qu6h.onrender.com/import', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
